@@ -55,7 +55,7 @@ const pkg = {
 
 1. Install [VS Code ESLint extension](https://github.com/microsoft/vscode-eslint).
 
-    后续将使用 ESLint 作为默认的 Formatter
+    Check if there are other plugins set as the default formatter in the editor. If so, they need to be removed or replaced with ESLint:
 
     ```json
     {
