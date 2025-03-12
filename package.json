@@ -1,9 +1,10 @@
 {
   "name": "@july_cm/eslint-config",
-  "version": "0.0.2",
+  "version": "1.0.1",
   "main": "./lib/index.js",
   "type": "module",
   "files": ["README.md", "lib"],
+  "author": "July",
   "dependencies": {
     "@eslint/js": "^9.22.0",
     "eslint-config-prettier": "^10.1.1",
@@ -17,5 +18,13 @@
   },
   "optionalPeerDependencies": {
     "eslint": "^9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JxJuly/eslint-config.git"
+  },
+  "homepage": "https://github.com/JxJuly/eslint-config/blob/main/README.md",
+  "bugs": {
+    "url": "https://github.com/JxJuly/eslint-config/issues"
   }
 }
