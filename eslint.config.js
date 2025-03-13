@@ -1,3 +1,3 @@
-import { javascriptConfig, packageJsonConfig } from './lib/index.js';
+import { recommended } from './lib/index.js';
 
-export default [...javascriptConfig, ...packageJsonConfig];
+export default recommended;
