@@ -39,6 +39,9 @@ devDependencies:
   release-it-pnpm:
     specifier: ^4.6.4
     version: 4.6.4(release-it@18.1.2)
+  typescript:
+    specifier: ^5.8.2
+    version: 5.8.2
 
 packages:
 
