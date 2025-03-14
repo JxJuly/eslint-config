@@ -19,7 +19,7 @@ npm install --save-dev eslint @july_cm/eslint-config
 ## Language support
 
 ```javascript
-const config from '@july_cm/eslint-config';
+const * as config from '@july_cm/eslint-config';
 
 // only javascript
 export default config.javascript;
