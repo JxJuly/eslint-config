@@ -1,5 +1,11 @@
 # Changelog | 变更日志
 
+## [2.1.0](https://github.com/JxJuly/eslint-config/compare/2.0.0...2.1.0) (2025-03-14)
+
+### 🌟 Features | 新功能
+
+* ts 增加 consistent-type-imports 检测 & 修复 packageJson 约束 ([a6fb6a9](https://github.com/JxJuly/eslint-config/commit/a6fb6a9309dd40efa19fd2600ea43acc4cbd325a))
+
 ## [2.0.0](https://github.com/JxJuly/eslint-config/compare/1.0.1...2.0.0) (2025-03-14)
 
 ### ⚠ BREAKING CHANGES
