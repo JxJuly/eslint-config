@@ -1,5 +1,11 @@
 # Changelog | 变更日志
 
+## [2.2.0](https://github.com/JxJuly/eslint-config/compare/2.1.0...2.2.0) (2025-03-22)
+
+### 🌟 Features | 新功能
+
+* ts any 降级为 warn ([030595f](https://github.com/JxJuly/eslint-config/commit/030595fc2ccd5522297962603e568bb5464650c7))
+
 ## [2.1.0](https://github.com/JxJuly/eslint-config/compare/2.0.0...2.1.0) (2025-03-14)
 
 ### 🌟 Features | 新功能
