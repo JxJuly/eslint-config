@@ -42,14 +42,18 @@ export default config.recommended;
 The sorting functionality is implemented based on [eslint-plugin-jsonc](https://github.com/ota-meshi/eslint-plugin-jsonc) and [prettier](https://github.com/prettier/prettier).
 
 ```javascript
-// root keys order
-const order = ['name', 'version', 'author', 'scripts', 'dependencies', 'devDependencies'];
-
-// dependencies package order
-const pkg = {
+[{
+  pathPattern: '^$',
+  order: ['name', 'version', 'author', 'exports', 'types', 'main', 'module', 'scripts', 'dependencies', 'devDependencies'],
+},
+{
   pathPattern: '^(?:dev|peer|optional|bundled)?[Dd]ependencies$',
   order: { type: 'asc' },
 },
+{
+  pathPattern: 'exports',
+  order: ['types', 'require', 'import']
+}]
 ```
 
 ## With `Visual Studio Code`
