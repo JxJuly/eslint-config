@@ -1,5 +1,16 @@
 # Changelog | 变更日志
 
+## [2.3.0](https://github.com/JxJuly/eslint-config/compare/2.2.0...2.3.0) (2025-03-31)
+
+### 🌟 Features | 新功能
+
+* js 使用最新的稳定与法 & 补充单测 ([c93494c](https://github.com/JxJuly/eslint-config/commit/c93494ce745f7b7cfccf0fb44e28189d2f6b66bf))
+* 更新 README ([989f431](https://github.com/JxJuly/eslint-config/commit/989f431fe273f778b66bf58b4a9b659deaee1687))
+
+### 🐛 Bug Fixes | Bug 修复
+
+* 调整了 package 规则中 types\mjs\cjs 的声明顺序 ([0a6370b](https://github.com/JxJuly/eslint-config/commit/0a6370b53763008b40029412ef500d72d16e8106))
+
 ## [2.2.0](https://github.com/JxJuly/eslint-config/compare/2.1.0...2.2.0) (2025-03-22)
 
 ### 🌟 Features | 新功能
