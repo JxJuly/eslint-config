@@ -8,6 +8,14 @@ It depends on ESLint v9 or later and is only compatible with Flat Configuration.
 
 ✅ [flat configuration](https://eslint.org/docs/latest/use/configure/configuration-files-new) (new: `eslint.config.js`)
 
+## 功能 ｜ Features
+
+- ✅ 开箱即用且轻量的 JavaScript ESLint 配置
+
+- ✅ 开箱即用且轻量的 TypeScript ESLint 配置
+
+- ✅ 支持 package.json 字段的排序，尤其是 dependencies 等字段
+
 ## Installation
 
 ```sh
@@ -16,9 +24,14 @@ npm install --save-dev eslint @july_cm/eslint-config
 
 `@july_cm/eslint-config` does not install ESLint for you. You must install these yourself.
 
-## Language support
+## 快速开始
+
+扁平化的配置，可以使用指定的编程语言配置或者直接使用推荐配置。
+
+直接使用 `recommended` 也无需担心 `.ts` 文件被 `javascript` 规则命中，本包内部已经做了规则的隔离，以保证规则和性能的稳定。
 
 ```javascript
+// eslint.config.js
 const * as config from '@july_cm/eslint-config';
 
 // only javascript
@@ -34,6 +47,23 @@ export default config.typescript;
  * - package.json
  */
 export default config.recommended;
+```
+
+⚠️ 需要注意：若 `package.json` 中的 `type` 字段没有显示设置为 `module`，则文件名需要改为 `eslint.config.mjs`.
+
+## 自定义规则
+
+支持自定义规则或者配置，建议使用 ESLint 官方的函数 `defineConfig` 作为合并函数：
+
+```javascript
+// eslint.config.js
+import { recommended } from '@july_cm/eslint-config';
+import { defineConfig } from 'eslint/config';
+
+export default defineConfig(recommended, {
+  ignores: ["dist"],
+  rules: {}
+})
 ```
 
 
