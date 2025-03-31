@@ -9,6 +9,7 @@
   ],
   "author": "July",
   "scripts": {
+    "test": "vitest run",
     "release": "release-it -ci"
   },
   "dependencies": {
@@ -26,7 +27,8 @@
     "eslint": "^9.22.0",
     "release-it": "^18.1.2",
     "release-it-pnpm": "^4.6.4",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.9"
   },
   "optionalPeerDependencies": {
     "eslint": "^9",
