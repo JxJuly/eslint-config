@@ -1,13 +1,13 @@
 {
   "name": "@july_cm/eslint-config",
   "version": "2.3.0",
+  "author": "July",
   "main": "./lib/index.js",
   "type": "module",
   "files": [
     "README.md",
     "lib"
   ],
-  "author": "July",
   "scripts": {
     "test": "vitest run",
     "release": "release-it -ci"
@@ -23,10 +23,10 @@
     "typescript-eslint": "^8.26.1"
   },
   "devDependencies": {
-    "@release-it/conventional-changelog": "^10.0.0",
+    "@release-it/conventional-changelog": "^10.0.1",
     "eslint": "^9.22.0",
-    "release-it": "^18.1.2",
-    "release-it-pnpm": "^4.6.4",
+    "release-it": "^19.0.4",
+    "stylelint": "^16.23.1",
     "typescript": "^5.8.2",
     "vitest": "^3.0.9"
   },

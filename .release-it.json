@@ -1,7 +1,6 @@
 {
-  "$schema": "https://unpkg.com/release-it@18/schema/release-it.json",
+  "$schema": "https://unpkg.com/release-it@19/schema/release-it.json",
   "plugins": {
-    "release-it-pnpm": {},
     "@release-it/conventional-changelog": {
       "infile": "CHANGELOG.md",
       "header": "# Changelog | 变更日志",
@@ -10,7 +9,8 @@
         "types": [
           { "type": "feat", "section": "🌟 Features | 新功能"},
           { "type": "fix", "section": "🐛 Bug Fixes | Bug 修复"},
-          { "type": "ci", "section": "🚀 Tool | 工具升级"}
+          { "type": "ci", "section": "🚀 Tool | 工具升级"},
+          { "type": "chore", "section": "🔧 Chore | 日常维护"}
         ]
       }
     }
