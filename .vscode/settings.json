@@ -2,5 +2,6 @@
   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
-  }
+  },
+  "eslint.validate": ["css", "json", "jsonc", "javascript", "javascriptreact", "typescript", "typescriptreact"]
 }

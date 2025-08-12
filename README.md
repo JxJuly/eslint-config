@@ -14,7 +14,11 @@ It depends on ESLint v9 or later and is only compatible with Flat Configuration.
 
 - ✅ 开箱即用且轻量的 TypeScript ESLint 配置
 
+- ✅ 开箱即用且轻量的 CSS ESLint 配置
+
 - ✅ 支持 package.json 字段的排序，尤其是 dependencies 等字段
+
+- ✅ 搭配 prettier 规则的代码风格检查
 
 ## Installation
 
