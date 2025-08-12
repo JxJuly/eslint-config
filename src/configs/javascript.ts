@@ -1,23 +1,19 @@
 import eslintJs from '@eslint/js';
 import { defineConfig } from 'eslint/config';
-import eslintPluginImport from 'eslint-plugin-import';
-import tsEslint from 'typescript-eslint';
+import importPlugin from 'eslint-plugin-import';
 
-import eslintPrettier from './prettier.js';
+import { prettierConfig } from './prettier';
+
 /**
  * defineConfig 会 flat 一层 extends，并且将 files 字段赋值给所有 extends
  * 可以借助这个函数为所有插件添加 files 约束，防止语言之间的污染
  */
-const typescriptConfig = defineConfig({
-  extends: [
-    eslintJs.configs.recommended,
-    ...tsEslint.configs.recommended,
-    ...tsEslint.configs.stylistic,
-    eslintPluginImport.flatConfigs.recommended,
-    eslintPluginImport.flatConfigs.typescript,
-    ...eslintPrettier,
-  ],
-  files: ['**/*.{ts,tsx}'],
+const javascriptConfig = defineConfig({
+  extends: [eslintJs.configs.recommended, importPlugin.flatConfigs.recommended, ...prettierConfig],
+  files: ['**/*.{js,mjs,cjs,jsx}'],
+  languageOptions: {
+    ecmaVersion: 'latest',
+  },
   rules: {
     'import/order': [
       'warn',
@@ -45,19 +41,18 @@ const typescriptConfig = defineConfig({
         ],
       },
     ],
-    '@typescript-eslint/consistent-type-imports': [
-      'error',
-      { disallowTypeAnnotations: true, prefer: 'type-imports' },
-    ],
-    '@typescript-eslint/no-explicit-any': ['warn'],
   },
   settings: {
     'import/resolver': {
       node: true,
+      /**
+       * https://github.com/import-js/eslint-plugin-import/issues/3140
+       * eslint-plugin-import-node 解析器不支持 export 字段，所以不得不使用 eslint-plugin-import-typescript
+       */
       typescript: true,
     },
   },
 });
 
-export { typescriptConfig };
-export default typescriptConfig;
+export { javascriptConfig };
+export default javascriptConfig;

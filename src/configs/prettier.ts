@@ -1,6 +1,12 @@
 import recommended from 'eslint-plugin-prettier/recommended';
 
-const prettierConfig = [
+import type { Linter } from 'eslint';
+
+/**
+ * prettier config 作为具体语言的公共配置
+ * prettier 本身可以作为 js、ts、json、css、markdown 等多种语言的格式化工具，这里不做语言限制
+ */
+const prettierConfig: Linter.Config[] = [
   recommended,
   {
     rules: {

@@ -1,9 +1,9 @@
 import { defineConfig } from 'eslint/config';
 
-import { cssConfig } from './configs/css.js';
-import { javascriptConfig } from './configs/javascript.js';
-import { packageJsonConfig } from './configs/package.js';
-import { typescriptConfig } from './configs/typescript.js';
+import { cssConfig } from './configs/css';
+import { javascriptConfig } from './configs/javascript';
+import { packageJsonConfig } from './configs/package-json';
+import { typescriptConfig } from './configs/typescript';
 
 export const recommended = defineConfig(javascriptConfig, typescriptConfig, packageJsonConfig, cssConfig);
 export const javascript = javascriptConfig;

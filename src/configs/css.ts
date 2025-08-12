@@ -4,7 +4,6 @@ import prettier from 'eslint-plugin-prettier';
 
 const cssConfig = defineConfig([
   {
-    // extends: ['css/recommended'],
     files: ['**/*.css'],
     plugins: { css, prettier },
     language: 'css/css',

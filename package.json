@@ -3,15 +3,20 @@
   "version": "2.3.0",
   "author": "July",
   "exports": {
-    ".": "./lib/index.js"
+    ".": {
+      "require": "./lib/index.cjs",
+      "import": "./lib/index.mjs"
+    }
   },
-  "main": "./lib/index.js",
+  "main": "./lib/index.cjs",
   "type": "module",
   "files": [
     "README.md",
-    "lib"
+    "lib",
+    "package.json"
   ],
   "scripts": {
+    "build": "vite build",
     "test": "vitest run",
     "release": "release-it -ci"
   },
@@ -24,13 +29,14 @@
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsonc": "^2.19.1",
     "eslint-plugin-prettier": "^5.5.4",
-    "typescript-eslint": "^8.26.1"
+    "typescript-eslint": "^8.39.1"
   },
   "devDependencies": {
     "@release-it/conventional-changelog": "^10.0.1",
     "eslint": "^9.33.0",
     "release-it": "^19.0.4",
-    "typescript": "^5.8.2",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.2",
     "vitest": "^3.0.9"
   },
   "optionalPeerDependencies": {
