@@ -1,0 +1,26 @@
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # 拉取代码
+      - name: git checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: setup
+        uses: ./.github/actions/setup
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
+
+      - name: test
+        run: pnpm run test:cov
+      
+      - name: upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
