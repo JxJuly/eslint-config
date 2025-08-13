@@ -1,14 +1,14 @@
 import { ESLint } from 'eslint';
 import { beforeAll, describe, test, expect } from 'vitest';
 
-import { javascriptConfig } from '../lib/configs/javascript';
+import { javascript } from '../src';
 
 describe('Javascript ESLint Config Tests', () => {
   let eslint: ESLint;
 
   beforeAll(() => {
     eslint = new ESLint({
-      overrideConfig: javascriptConfig,
+      overrideConfig: javascript,
     });
   });
 

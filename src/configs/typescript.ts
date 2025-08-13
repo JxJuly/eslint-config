@@ -1,7 +1,7 @@
 import eslintJs from '@eslint/js';
 import { defineConfig } from 'eslint/config';
 import eslintPluginImport from 'eslint-plugin-import';
-import { config as tsEslint } from 'typescript-eslint';
+import { configs as tsEslint } from 'typescript-eslint';
 
 import { prettierConfig } from './prettier';
 /**

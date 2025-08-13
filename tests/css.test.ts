@@ -1,14 +1,14 @@
 import { ESLint } from 'eslint';
 import { describe, beforeAll, test, expect } from 'vitest';
 
-import { cssConfig } from '../lib/configs/css';
+import { css } from '../src';
 
 describe('CSS ESLint Config Tests', () => {
   let eslint: ESLint;
 
   beforeAll(() => {
     eslint = new ESLint({
-      overrideConfig: cssConfig,
+      overrideConfig: css,
     });
   });
 

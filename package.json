@@ -18,26 +18,28 @@
   "scripts": {
     "build": "vite build",
     "test": "vitest run",
+    "test:cov": "vitest run --coverage",
     "release": "release-it -ci"
   },
   "dependencies": {
     "@eslint/css": "^0.10.0",
-    "@eslint/js": "^9.22.0",
+    "@eslint/js": "^9.33.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-node": "^0.3.9",
-    "eslint-import-resolver-typescript": "^3.8.6",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-jsonc": "^2.19.1",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsonc": "^2.20.1",
     "eslint-plugin-prettier": "^5.5.4",
     "typescript-eslint": "^8.39.1"
   },
   "devDependencies": {
     "@release-it/conventional-changelog": "^10.0.1",
+    "@vitest/coverage-v8": "^3.2.4",
     "eslint": "^9.33.0",
     "release-it": "^19.0.4",
     "typescript": "^5.9.2",
     "vite": "^7.1.2",
-    "vitest": "^3.0.9"
+    "vitest": "^3.2.4"
   },
   "optionalPeerDependencies": {
     "eslint": "^9",
