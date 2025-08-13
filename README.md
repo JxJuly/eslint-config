@@ -1,5 +1,9 @@
 # @july_cm/eslint-config
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![NPM Version](https://img.shields.io/npm/v/%40july_cm%2Feslint-config)](https://www.npmjs.com/package/@july_cm/eslint-config)
+[![codecov](https://codecov.io/gh/JxJuly/eslint-config/branch/main/graph/badge.svg?token=T1E32RHZB7)](https://codecov.io/gh/JxJuly/eslint-config)
+
 This is my common ESlint configuration.
 
 It depends on ESLint v9 or later and is only compatible with Flat Configuration.

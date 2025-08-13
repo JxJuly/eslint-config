@@ -1,3 +1,5 @@
+name: Test Main
+
 on:
   push:
     branches: [main]
