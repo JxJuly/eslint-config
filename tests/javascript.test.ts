@@ -8,6 +8,7 @@ describe('Javascript ESLint Config Tests', () => {
 
   beforeAll(() => {
     eslint = new ESLint({
+      overrideConfigFile: true,
       overrideConfig: javascript,
     });
   });
