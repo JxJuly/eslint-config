@@ -1,5 +1,22 @@
 # Changelog | 变更日志
 
+## [2.4.0](https://github.com/JxJuly/eslint-config/compare/2.3.0...2.4.0) (2025-08-13)
+
+### 🌟 Features | 新功能
+
+* 支持 css lint 和格式化 ([6217f92](https://github.com/JxJuly/eslint-config/commit/6217f92a8b1f194b6d27edde4afda835f9a8d300))
+
+### 🚀 Tool | 工具升级
+
+* test main ([7d69f88](https://github.com/JxJuly/eslint-config/commit/7d69f88b8bcd7b271108402ba9a3dfa4aec91716))
+* 优化构建流程 ([62d3e89](https://github.com/JxJuly/eslint-config/commit/62d3e8914de3ea270871395f231765906bbbc8db))
+
+### 🔧 Chore | 日常维护
+
+* fix unit test ([0c12bde](https://github.com/JxJuly/eslint-config/commit/0c12bde50d4a9df5d738b6a7defa906aa13b0457))
+* upgrade some dep version ([62fd0a0](https://github.com/JxJuly/eslint-config/commit/62fd0a07e5374c576a06972f6fa43bd08fdabbe3))
+* 使用 ts 重写 ([ebe2d37](https://github.com/JxJuly/eslint-config/commit/ebe2d374208fb9346472492eba3b1e032c98fe78))
+
 ## [2.3.0](https://github.com/JxJuly/eslint-config/compare/2.2.0...2.3.0) (2025-03-31)
 
 ### 🌟 Features | 新功能
