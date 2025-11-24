@@ -11,7 +11,6 @@ import { prettierConfig } from './prettier';
 const typescriptConfig = defineConfig({
   extends: [
     eslintJs.configs.recommended,
-    // @ts-expect-error - https://github.com/eslint/rewrite/issues/234
     tsEslint.stylistic,
     eslintPluginImport.flatConfigs.recommended,
     eslintPluginImport.flatConfigs.typescript,
