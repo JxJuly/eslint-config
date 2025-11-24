@@ -32,7 +32,8 @@ const packageJsonConfig = defineConfig({
       },
       {
         pathPattern: 'exports',
-        order: ['types', 'require', 'import'],
+        // Prefer ESM (import) before CommonJS (require)
+        order: ['types', 'import', 'require'],
       },
     ],
   },
