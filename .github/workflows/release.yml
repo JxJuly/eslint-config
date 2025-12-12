@@ -6,6 +6,17 @@ permissions:
 
 on:
   workflow_dispatch:
+    inputs:
+      version_type:
+        description: 'Version type (leave empty for auto)'
+        required: false
+        type: choice
+        options:
+          - ''
+          - patch
+          - minor
+          - major
+        default: ''
 
 jobs:
   publish:
@@ -26,7 +37,7 @@ jobs:
         run: pnpm run build
 
       - name: release
-        run: npx release-it --verbose
+        run: npx release-it ${{ github.event.inputs.version_type }} --verbose
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
