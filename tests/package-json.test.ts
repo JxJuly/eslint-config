@@ -1,5 +1,4 @@
 import { ESLint } from 'eslint';
-
 import { beforeAll, describe, test, expect } from 'vitest';
 
 import { packageJson } from '../src';
