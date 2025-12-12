@@ -1,5 +1,7 @@
 # @july_cm/eslint-config
 
+[简体中文](./README.zh-CN.md) | English
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![NPM Version](https://img.shields.io/npm/v/%40july_cm%2Feslint-config)](https://www.npmjs.com/package/@july_cm/eslint-config)
 [![codecov](https://codecov.io/gh/JxJuly/eslint-config/branch/main/graph/badge.svg?token=T1E32RHZB7)](https://codecov.io/gh/JxJuly/eslint-config)
@@ -12,17 +14,17 @@ It depends on ESLint v9 or later and is only compatible with Flat Configuration.
 
 ✅ [flat configuration](https://eslint.org/docs/latest/use/configure/configuration-files-new) (new: `eslint.config.js`)
 
-## 功能 ｜ Features
+## Features
 
-- ✅ 开箱即用且轻量的 JavaScript ESLint 配置
+- ✅ Out-of-the-box and lightweight JavaScript ESLint configuration
 
-- ✅ 开箱即用且轻量的 TypeScript ESLint 配置
+- ✅ Out-of-the-box and lightweight TypeScript ESLint configuration
 
-- ✅ 开箱即用且轻量的 CSS ESLint 配置
+- ✅ Out-of-the-box and lightweight CSS ESLint configuration
 
-- ✅ 支持 package.json 字段的排序，尤其是 dependencies 等字段
+- ✅ Support for package.json field sorting, especially dependencies and other fields
 
-- ✅ 搭配 prettier 规则的代码风格检查
+- ✅ Code style checking with Prettier rules
 
 ## Installation
 
@@ -32,11 +34,11 @@ npm install --save-dev eslint @july_cm/eslint-config
 
 `@july_cm/eslint-config` does not install ESLint for you. You must install these yourself.
 
-## 快速开始
+## Quick Start
 
-扁平化的配置，可以使用指定的编程语言配置或者直接使用推荐配置。
+Flat configuration allows you to use specific programming language configurations or directly use the recommended configuration.
 
-直接使用 `recommended` 也无需担心 `.ts` 文件被 `javascript` 规则命中，本包内部已经做了规则的隔离，以保证规则和性能的稳定。
+When using `recommended` directly, you don't need to worry about `.ts` files being matched by `javascript` rules. This package has internally isolated the rules to ensure stable rules and performance.
 
 ```javascript
 // eslint.config.js
@@ -57,11 +59,11 @@ export default config.typescript;
 export default config.recommended;
 ```
 
-⚠️ 需要注意：若 `package.json` 中的 `type` 字段没有显示设置为 `module`，则文件名需要改为 `eslint.config.mjs`.
+⚠️ Note: If the `type` field in `package.json` is not explicitly set to `module`, the filename needs to be changed to `eslint.config.mjs`.
 
-## 自定义规则
+## Custom Rules
 
-支持自定义规则或者配置，建议使用 ESLint 官方的函数 `defineConfig` 作为合并函数：
+Custom rules or configurations are supported. It is recommended to use ESLint's official `defineConfig` function as the merge function:
 
 ```javascript
 // eslint.config.js
@@ -117,7 +119,9 @@ The sorting functionality is implemented based on [eslint-plugin-jsonc](https://
     {
       "editor.codeActionsOnSave": {
         "source.fixAll.eslint": "explicit"
-      }
+      },
+      // ESLint does not validate css, json, jsonc by default, needs to be added manually
+      "eslint.validate": ["css", "json", "jsonc", "javascript", "javascriptreact", "typescript", "typescriptreact"]
     }
     ```
 
