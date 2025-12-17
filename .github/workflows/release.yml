@@ -37,4 +37,5 @@ jobs:
       - name: release
         run: npx release-it ${{ github.event.inputs.version_type }} --verbose
         env:
+          NPM_CONFIG_PROVENANCE: true
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
