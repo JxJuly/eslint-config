@@ -1,5 +1,25 @@
 # Changelog | 变更日志
 
+## [2.4.1](///compare/2.4.0...2.4.1) (2025-12-17)
+
+### 🚀 Tool | 工具升级
+
+* 优化 npm 认证配置和发布流程 b715c80
+* 升级 Node.js 到 v24，简化 npm 认证配置 ebe2b38
+* 升级 npm 到最新版本以支持 OIDC，跳过 release-it 检查 79dc0c3
+* 启用 OIDC 认证和 pnpm 缓存 72d51ca
+* 添加版本类型选择功能，支持手动指定或自动推断版本号 fb34cbb
+* 移除 setup-node 的 pnpm 缓存配置 42d8f33
+* 移除不必要的 npm ci 步骤 0eafb66
+* 统一 secrets 名称为大写 NPM_TOKEN e561b56
+
+### 🔧 Chore | 日常维护
+
+* **config:** add ESLint ignores and clean TypeScript config 2bb435b
+* **deps:** bump dependencies and add pnpm workspace 46e49d5
+* **deps:** update dependencies to latest versions 1c736fe
+* **package-json:** prefer ESM exports order and update tests 75798ac
+
 ## [2.4.0](https://github.com/JxJuly/eslint-config/compare/2.3.0...2.4.0) (2025-08-13)
 
 ### 🌟 Features | 新功能
