@@ -16,7 +16,8 @@
     }
   },
   "npm": {
-    "publish": true
+    "publish": true,
+    "skipChecks": true
   },
   "github": {
     "release": true
