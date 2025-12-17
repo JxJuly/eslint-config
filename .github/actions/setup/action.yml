@@ -13,9 +13,8 @@ runs:
     - name: Setup Node
       uses: actions/setup-node@v6
       with:
-        node-version: ${{ env.NODE_VERSION || '22' }}
+        node-version: ${{ env.NODE_VERSION || '24' }}
         registry-url: https://registry.npmjs.org/
-        token: ${{ env.NPM_TOKEN }}
 
     - name: Setup PNPM and Install Deps
       uses: pnpm/action-setup@v4

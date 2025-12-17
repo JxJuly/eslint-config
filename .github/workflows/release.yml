@@ -30,15 +30,9 @@ jobs:
       
       - name: setup
         uses: ./.github/actions/setup
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       
       - name: build
         run: pnpm run build
-
-      # OIDC requires npm v11.5.1 or later
-      # Node.js v20 comes with v10.8, so we need to update it:
-      - run: npm install -g npm@latest
 
       - name: release
         run: npx release-it ${{ github.event.inputs.version_type }} --verbose
