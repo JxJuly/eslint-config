@@ -30,6 +30,8 @@ jobs:
       
       - name: setup
         uses: ./.github/actions/setup
+        env:
+          PNPM_VERSION: 10.26.1
       
       - name: build
         run: pnpm run build

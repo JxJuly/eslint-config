@@ -17,7 +17,7 @@ jobs:
       - name: setup
         uses: ./.github/actions/setup
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          PNPM_VERSION: 10.26.1
 
       - name: test
         run: pnpm run test:cov
