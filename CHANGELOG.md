@@ -1,5 +1,12 @@
 # Changelog | 变更日志
 
+## [2.4.2](///compare/2.4.1...2.4.2) (2025-12-23)
+
+### 🔧 Chore | 日常维护
+
+* update css config and dependencies 52fc3f8
+* update pnpm version in workflows 7aba3f3
+
 ## [2.4.1](///compare/2.4.0...2.4.1) (2025-12-17)
 
 ### 🚀 Tool | 工具升级
