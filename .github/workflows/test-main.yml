@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup
-        uses: JxJuly/github-actions/setup-environment@v0.0.2
+        uses: JxJuly/github-actions/setup-environment@v0.0.3
         with:
           run_install: |
             - args: [--frozen-lockfile]

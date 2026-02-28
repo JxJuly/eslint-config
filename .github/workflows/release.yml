@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup
-        uses: JxJuly/github-actions/setup-environment@v0.0.2
+        uses: JxJuly/github-actions/setup-environment@v0.0.3
         with:
           run_install: |
             - args: [--frozen-lockfile]
@@ -30,6 +30,6 @@ jobs:
         run: pnpm run build
 
       - name: Release
-        uses: JxJuly/github-actions/release-it@v0.0.2
+        uses: JxJuly/github-actions/release-it@v0.0.3
         with:
           version-bump: ${{ github.event.inputs.version_bump }}
