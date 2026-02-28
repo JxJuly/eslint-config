@@ -7,37 +7,29 @@ permissions:
 on:
   workflow_dispatch:
     inputs:
-      version_type:
+      version_bump:
         description: 'Version type (leave empty for auto)'
         required: false
         type: choice
         options:
-          - ''
           - patch
           - minor
           - major
-        default: ''
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      # 拉取代码
-      - name: git checkout
-        uses: actions/checkout@v4
+      - name: Setup
+        uses: JxJuly/github-actions/setup-environment@v0.0.2
         with:
-          fetch-depth: 0
+          run_install: |
+            - args: [--frozen-lockfile]
       
-      - name: setup
-        uses: ./.github/actions/setup
-        env:
-          PNPM_VERSION: 10.26.1
-      
-      - name: build
+      - name: Build
         run: pnpm run build
 
-      - name: release
-        run: npx release-it ${{ github.event.inputs.version_type }} --verbose
-        env:
-          NPM_CONFIG_PROVENANCE: true
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Release
+        uses: JxJuly/github-actions/release-it@v0.0.2
+        with:
+          version-bump: ${{ github.event.inputs.version_bump }}
