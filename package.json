@@ -2,14 +2,22 @@
   "name": "@july_cm/eslint-config",
   "version": "2.4.2",
   "author": "July",
+  "homepage": "https://github.com/JxJuly/eslint-config/blob/main/README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JxJuly/eslint-config.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JxJuly/eslint-config/issues"
+  },
+  "type": "module",
   "exports": {
     ".": {
-      "require": "./lib/index.cjs",
-      "import": "./lib/index.mjs"
+      "import": "./lib/index.mjs",
+      "require": "./lib/index.cjs"
     }
   },
   "main": "./lib/index.cjs",
-  "type": "module",
   "files": [
     "README.md",
     "lib",
@@ -37,7 +45,7 @@
   "devDependencies": {
     "@release-it/conventional-changelog": "^10.0.3",
     "@vitest/coverage-v8": "^4.0.15",
-    "eslint": "^9.39.1",
+    "eslint": "^9.39.3",
     "release-it": "^19.1.0",
     "typescript": "^5.9.3",
     "vite": "^7.2.7",
@@ -46,13 +54,5 @@
   "optionalPeerDependencies": {
     "eslint": "^9",
     "typescript": "^5"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/JxJuly/eslint-config.git"
-  },
-  "homepage": "https://github.com/JxJuly/eslint-config/blob/main/README.md",
-  "bugs": {
-    "url": "https://github.com/JxJuly/eslint-config/issues"
   }
 }

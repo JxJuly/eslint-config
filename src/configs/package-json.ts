@@ -14,16 +14,32 @@ const packageJsonConfig = defineConfig({
       {
         pathPattern: '^$',
         order: [
+          // basic information
           'name',
           'version',
+          'description',
           'author',
+          'keywords',
+          'homepage',
+          'repository',
+          'bugs',
+          'license',
+          // entries and environment
+          'type',
           'exports',
           'types',
           'main',
-          'module',
+          'bin',
           'scripts',
+          'packageManager',
+          // dependencies
           'dependencies',
           'devDependencies',
+          'peerDependencies',
+          'peerDependenciesMeta',
+          'optionalDependencies',
+          // config
+          'publishConfig',
         ],
       },
       {
