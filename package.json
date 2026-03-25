@@ -30,26 +30,26 @@
   },
   "packageManager": "pnpm@10.26.1",
   "dependencies": {
-    "@eslint/css": "^0.14.1",
-    "@eslint/js": "^9.39.1",
+    "@eslint/css": "^1.0.0",
+    "@eslint/js": "^10.0.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-node": "^0.3.9",
     "eslint-import-resolver-typescript": "^4.4.4",
-    "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsonc": "^2.21.0",
     "eslint-plugin-prettier": "^5.5.4",
-    "tailwind-csstree": "^0.1.4",
-    "typescript-eslint": "^8.49.0"
+    "eslint-plugin-simple-import-sort":"^12.1.1",
+    "tailwind-csstree": "^0.3.0",
+    "typescript-eslint": "^8.57.2"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^4.0.15",
-    "eslint": "^9.39.3",
+    "eslint": "^10.1.0",
     "typescript": "^5.9.3",
     "vite": "^7.2.7",
     "vitest": "^4.0.15"
   },
   "optionalPeerDependencies": {
-    "eslint": "^9",
+    "eslint": "^10",
     "typescript": "^5"
   }
 }

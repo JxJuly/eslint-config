@@ -14,8 +14,8 @@ const config = defineConfig({
     rollupOptions: {
       external: [...Object.keys(pkg.dependencies), 'eslint/config', 'eslint-plugin-prettier/recommended'],
       output: {
-        exports: 'named'
-      }
+        exports: 'named',
+      },
     },
   },
 });

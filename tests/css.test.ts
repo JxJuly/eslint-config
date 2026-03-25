@@ -1,5 +1,5 @@
 import { ESLint } from 'eslint';
-import { describe, beforeAll, test, expect } from 'vitest';
+import { beforeAll, describe, expect, test } from 'vitest';
 
 import { css } from '../src';
 

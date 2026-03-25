@@ -1,6 +1,6 @@
 import eslintJs from '@eslint/js';
 import { defineConfig } from 'eslint/config';
-import eslintPluginImport from 'eslint-plugin-import';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import { configs as tsEslint } from 'typescript-eslint';
 
 import { prettierConfig } from './prettier';
@@ -9,52 +9,19 @@ import { prettierConfig } from './prettier';
  * 可以借助这个函数为所有插件添加 files 约束，防止语言之间的污染
  */
 const typescriptConfig = defineConfig({
-  extends: [
-    eslintJs.configs.recommended,
-    tsEslint.stylistic,
-    eslintPluginImport.flatConfigs.recommended,
-    eslintPluginImport.flatConfigs.typescript,
-    prettierConfig,
-  ],
+  extends: [eslintJs.configs.recommended, tsEslint.stylistic, prettierConfig],
+  plugins: {
+    'simple-import-sort': simpleImportSort,
+  },
   files: ['**/*.{ts,tsx}'],
   rules: {
-    'import/order': [
-      'warn',
-      {
-        groups: ['builtin', 'external', 'internal', ['parent', 'sibling'], 'object', 'type', 'index'],
-        'newlines-between': 'always',
-        pathGroupsExcludedImportTypes: ['builtin'],
-        alphabetize: { order: 'asc', caseInsensitive: true },
-        pathGroups: [
-          {
-            pattern: 'react**',
-            group: 'external',
-            position: 'before',
-          },
-          {
-            pattern: '{@/**,@**}',
-            group: 'internal',
-            position: 'before',
-          },
-          {
-            pattern: '**/*.{scss,json,svg,css,less}',
-            group: 'index',
-            position: 'after',
-          },
-        ],
-      },
-    ],
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
     '@typescript-eslint/consistent-type-imports': [
       'error',
       { disallowTypeAnnotations: true, prefer: 'type-imports' },
     ],
     '@typescript-eslint/no-explicit-any': ['warn'],
-  },
-  settings: {
-    'import/resolver': {
-      node: true,
-      typescript: true,
-    },
   },
 });
 
