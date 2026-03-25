@@ -34,4 +34,4 @@ jobs:
       - name: Release
         uses: JxJuly/github-actions/release-it@v0.0.4
         with:
-          version-bump: ${{ github.event.inputs.version_bump }}
+          version_bump: ${{ github.event.inputs.version_bump }}
