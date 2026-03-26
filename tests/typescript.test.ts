@@ -21,7 +21,9 @@ import { b } from 'b';
 console.log(a, b);
 `;
     const results = await eslint.lintText(code, { filePath: 'test.ts' });
-    const errorMsgs = results.flatMap((result) => result.messages.map((msg) => msg.message));
+    const errorMsgs = results.flatMap((result) =>
+      result.messages.map((msg) => msg.message)
+    );
     expect(errorMsgs.length).toEqual(0);
   });
 
@@ -37,8 +39,12 @@ console.log(a, b);
       fix: false,
     });
     const results = await eslintNoFix.lintText(code, { filePath: 'test.ts' });
-    const errorMsgs = results.flatMap((result) => result.messages.map((msg) => msg.message));
-    expect(errorMsgs.some((msg) => msg.includes('Run autofix to sort these imports'))).toBe(true);
+    const errorMsgs = results.flatMap((result) =>
+      result.messages.map((msg) => msg.message)
+    );
+    expect(
+      errorMsgs.some((msg) => msg.includes('Run autofix to sort these imports'))
+    ).toBe(true);
   });
 
   test('autofix unsorted imports', async () => {
@@ -48,7 +54,9 @@ import { a } from 'a';
 console.log(a, b);
 `;
     const results = await eslint.lintText(code, { filePath: 'test.ts' });
-    expect(results[0].output).toBe(`import { a } from 'a';\nimport { b } from 'b';\n\nconsole.log(a, b);\n`);
+    expect(results[0].output).toBe(
+      `import { a } from 'a';\nimport { b } from 'b';\n\nconsole.log(a, b);\n`
+    );
   });
 
   test('autofix mixed imports with side effects', async () => {
@@ -70,7 +78,9 @@ console.log(a, b);
 export { b } from 'b';
 `;
     const results = await eslint.lintText(code, { filePath: 'test.ts' });
-    const errorMsgs = results.flatMap((result) => result.messages.map((msg) => msg.message));
+    const errorMsgs = results.flatMap((result) =>
+      result.messages.map((msg) => msg.message)
+    );
     expect(errorMsgs.length).toEqual(0);
   });
 
@@ -84,9 +94,29 @@ export { a } from 'a';
       fix: false,
     });
     const results = await eslintNoFix.lintText(code, { filePath: 'test.ts' });
-    const errorMsgs = results.flatMap((result) => result.messages.map((msg) => msg.message));
+    const errorMsgs = results.flatMap((result) =>
+      result.messages.map((msg) => msg.message)
+    );
     expect(errorMsgs.length).toBeGreaterThan(0);
-    expect(errorMsgs.some((msg) => msg.includes('Run autofix to sort these exports'))).toBe(true);
+    expect(
+      errorMsgs.some((msg) => msg.includes('Run autofix to sort these exports'))
+    ).toBe(true);
+  });
+
+  test('exported interface with callback param should not trigger no-unused-vars', async () => {
+    const code = `export interface A { fn: (p: string) => string }
+`;
+    const eslintNoFix = new ESLint({
+      overrideConfigFile: true,
+      overrideConfig: typescript,
+      fix: false,
+    });
+    const results = await eslintNoFix.lintText(code, { filePath: 'test.ts' });
+    const errorMsgs = results.flatMap((result) =>
+      result.messages.map((msg) => msg.message)
+    );
+
+    expect(errorMsgs.some((msg) => msg.includes('no-unused-vars'))).toBe(false);
   });
 
   test('autofix unsorted exports', async () => {
@@ -94,6 +124,8 @@ export { a } from 'a';
 export { a } from 'a';
 `;
     const results = await eslint.lintText(code, { filePath: 'test.ts' });
-    expect(results[0].output).toBe(`export { a } from 'a';\nexport { b } from 'b';\n`);
+    expect(results[0].output).toBe(
+      `export { a } from 'a';\nexport { b } from 'b';\n`
+    );
   });
 });

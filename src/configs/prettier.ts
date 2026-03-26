@@ -1,6 +1,5 @@
-import recommended from 'eslint-plugin-prettier/recommended';
-
 import type { Linter } from 'eslint';
+import recommended from 'eslint-plugin-prettier/recommended';
 
 /**
  * prettier config 作为具体语言的公共配置
@@ -15,7 +14,7 @@ const prettierConfig: Linter.Config[] = [
         {
           // 优先使用单引号
           singleQuote: true,
-          printWidth: 110,
+          printWidth: 80,
           // 需要分号
           semi: true,
           // 仅在 es5 中有效的结构尾随逗号

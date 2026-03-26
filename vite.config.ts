@@ -2,17 +2,23 @@ import { defineConfig } from 'vite';
 
 import pkg from './package.json';
 
+const deps = [
+  ...Object.keys(pkg.dependencies),
+  ...Object.keys(pkg.peerDependencies),
+];
+
 const config = defineConfig({
   build: {
-    outDir: './lib',
+    outDir: './dist',
     minify: false,
     lib: {
       formats: ['es', 'cjs'],
       entry: './src/index.ts',
-      fileName: (format) => `index.${format === 'es' ? 'm' : 'c'}js`,
+      fileName: (format) => `index.${format === 'es' ? '' : 'c'}js`,
     },
-    rollupOptions: {
-      external: [...Object.keys(pkg.dependencies), 'eslint/config', 'eslint-plugin-prettier/recommended'],
+    rolldownOptions: {
+      external: (id) =>
+        deps.some((dep) => id === dep || id.startsWith(`${dep}/`)),
       output: {
         exports: 'named',
       },

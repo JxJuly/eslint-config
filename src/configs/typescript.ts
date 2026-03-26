@@ -9,7 +9,7 @@ import { prettierConfig } from './prettier';
  * 可以借助这个函数为所有插件添加 files 约束，防止语言之间的污染
  */
 const typescriptConfig = defineConfig({
-  extends: [eslintJs.configs.recommended, tsEslint.stylistic, prettierConfig],
+  extends: [eslintJs.configs.recommended, tsEslint.recommended, prettierConfig],
   plugins: {
     'simple-import-sort': simpleImportSort,
   },

@@ -9,7 +9,7 @@ import { prettierConfig } from './prettier';
  * 可以借助这个函数为所有插件添加 files 约束，防止语言之间的污染
  */
 const javascriptConfig = defineConfig({
-  extends: [eslintJs.configs.recommended, ...prettierConfig],
+  extends: [eslintJs.configs.recommended, prettierConfig],
   plugins: {
     'simple-import-sort': simpleImportSort,
   },
@@ -20,16 +20,6 @@ const javascriptConfig = defineConfig({
   rules: {
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
-  },
-  settings: {
-    'import/resolver': {
-      node: true,
-      /**
-       * https://github.com/import-js/eslint-plugin-import/issues/3140
-       * eslint-plugin-import-node 解析器不支持 export 字段，所以不得不使用 eslint-plugin-import-typescript
-       */
-      typescript: true,
-    },
   },
 });
 

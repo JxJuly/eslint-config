@@ -1,7 +1,8 @@
-import { defineConfig } from 'eslint/config';
+import { defineConfig, globalIgnores } from 'eslint/config';
 
-import { recommended } from './lib/index.mjs';
+import { recommended } from './dist/index.js';
 
-export default defineConfig(recommended, {
-  ignores: ['node_modules', './lib'],
-});
+export default defineConfig(
+  globalIgnores(['node_modules', './dist']),
+  recommended
+);

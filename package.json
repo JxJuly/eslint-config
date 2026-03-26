@@ -1,6 +1,9 @@
 {
   "name": "@july_cm/eslint-config",
   "version": "2.5.0",
+  "description": "Shared ESLint config for July's projects",
+  "keywords": ["eslint", "eslint-config", "prettier", "typescript"],
+  "license": "MIT",
   "author": "July",
   "homepage": "https://github.com/JxJuly/eslint-config/blob/main/README.md",
   "repository": {
@@ -11,24 +14,27 @@
     "url": "https://github.com/JxJuly/eslint-config/issues"
   },
   "type": "module",
+  "engines": {
+    "node": ">=18.18.0"
+  },
+  "packageManager": "pnpm@10.26.1",
   "exports": {
     ".": {
-      "import": "./lib/index.mjs",
-      "require": "./lib/index.cjs"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     }
   },
-  "main": "./lib/index.cjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "files": [
     "README.md",
-    "lib",
-    "package.json"
+    "dist"
   ],
   "scripts": {
     "build": "vite build",
     "test": "vitest run",
     "test:cov": "vitest run --coverage"
   },
-  "packageManager": "pnpm@10.26.1",
   "dependencies": {
     "@eslint/css": "^1.0.0",
     "@eslint/js": "^10.0.1",
@@ -46,8 +52,13 @@
     "vite": "^8.0.2",
     "vitest": "^4.1.1"
   },
-  "optionalPeerDependencies": {
+  "peerDependencies": {
     "eslint": "^10",
     "typescript": "^5"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
   }
 }
