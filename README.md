@@ -6,25 +6,18 @@
 [![NPM Version](https://img.shields.io/npm/v/%40july_cm%2Feslint-config)](https://www.npmjs.com/package/@july_cm/eslint-config)
 [![codecov](https://codecov.io/gh/JxJuly/eslint-config/branch/main/graph/badge.svg?token=T1E32RHZB7)](https://codecov.io/gh/JxJuly/eslint-config)
 
-This is my common ESlint configuration.
+Shared ESLint config for July's projects.
 
-It depends on ESLint v9 or later and is only compatible with Flat Configuration.
-
-❌ [legacy configuration](https://eslint.org/docs/latest/use/configure/configuration-files-deprecated) (legacy: `.eslintrc*`)
-
-✅ [flat configuration](https://eslint.org/docs/latest/use/configure/configuration-files-new) (new: `eslint.config.js`)
+Requires ESLint v10 or later, only compatible with [flat configuration](https://eslint.org/docs/latest/use/configure/configuration-files-new) (`eslint.config.js`).
 
 ## Features
 
-- ✅ Out-of-the-box and lightweight JavaScript ESLint configuration
-
-- ✅ Out-of-the-box and lightweight TypeScript ESLint configuration
-
-- ✅ Out-of-the-box and lightweight CSS ESLint configuration
-
-- ✅ Support for package.json field sorting, especially dependencies and other fields
-
-- ✅ Code style checking with Prettier rules
+- ✅ Out-of-the-box JavaScript ESLint configuration
+- ✅ Out-of-the-box TypeScript ESLint configuration
+- ✅ Out-of-the-box CSS ESLint configuration (with Tailwind CSS v4 support)
+- ✅ Comprehensive `package.json` field sorting (all npm standard fields + sub-field ordering)
+- ✅ Automatic import/export sorting via `eslint-plugin-simple-import-sort`
+- ✅ Integrated Prettier formatting rules (no need for a separate Prettier extension)
 
 ## Installation
 
@@ -32,17 +25,17 @@ It depends on ESLint v9 or later and is only compatible with Flat Configuration.
 npm install --save-dev eslint @july_cm/eslint-config
 ```
 
-`@july_cm/eslint-config` does not install ESLint for you. You must install these yourself.
+`@july_cm/eslint-config` does not install ESLint for you. You must install it yourself.
 
 ## Quick Start
 
-Flat configuration allows you to use specific programming language configurations or directly use the recommended configuration.
+You can use individual language configurations or the `recommended` preset directly.
 
-When using `recommended` directly, you don't need to worry about `.ts` files being matched by `javascript` rules. This package has internally isolated the rules to ensure stable rules and performance.
+When using `recommended`, you don't need to worry about `.ts` files being matched by `javascript` rules — rules are internally isolated per language.
 
 ```javascript
 // eslint.config.js
-const * as config from '@july_cm/eslint-config';
+import * as config from '@july_cm/eslint-config';
 
 // only javascript
 export default config.javascript;
@@ -50,86 +43,102 @@ export default config.javascript;
 // only typescript
 export default config.typescript;
 
+// only css
+export default config.css;
+
+// only package.json sorting
+export default config.packageJson;
+
 /**
- * recommended
+ * recommended (includes all of the above)
  * - javascript
  * - typescript
+ * - css
  * - package.json
  */
 export default config.recommended;
 ```
 
-⚠️ Note: If the `type` field in `package.json` is not explicitly set to `module`, the filename needs to be changed to `eslint.config.mjs`.
+⚠️ If the `type` field in `package.json` is not set to `"module"`, rename the config file to `eslint.config.mjs`.
 
 ## Custom Rules
 
-Custom rules or configurations are supported. It is recommended to use ESLint's official `defineConfig` function as the merge function:
+You can extend or override rules using ESLint's `defineConfig`:
 
 ```javascript
 // eslint.config.js
 import { recommended } from '@july_cm/eslint-config';
-import { defineConfig } from 'eslint/config';
+import { defineConfig, globalIgnores } from 'eslint/config';
 
-export default defineConfig(recommended, {
-  ignores: ["dist"],
-  rules: {}
-})
+export default defineConfig(
+  globalIgnores(['dist']),
+  recommended,
+  {
+    rules: {
+      // your custom rules
+    },
+  }
+);
 ```
 
+## Included Configurations
 
-## Abort `package.json` key order
+### JavaScript
 
-The sorting functionality is implemented based on [eslint-plugin-jsonc](https://github.com/ota-meshi/eslint-plugin-jsonc) and [prettier](https://github.com/prettier/prettier).
+- Extends `@eslint/js` recommended rules
+- Auto-sorts imports and exports
+- Prettier formatting (single quotes, semicolons, 80 char width, ES5 trailing commas)
+- Files: `**/*.{js,mjs,cjs,jsx}`
 
-```javascript
-[{
-  pathPattern: '^$',
-  order: ['name', 'version', 'author', 'exports', 'types', 'main', 'module', 'scripts', 'dependencies', 'devDependencies'],
-},
-{
-  pathPattern: '^(?:dev|peer|optional|bundled)?[Dd]ependencies$',
-  order: { type: 'asc' },
-},
-{
-  pathPattern: 'exports',
-  order: ['types', 'require', 'import']
-}]
-```
+### TypeScript
 
-## With `Visual Studio Code`
+- Extends `@eslint/js` recommended + `typescript-eslint` recommended rules
+- Enforces `type` imports (`@typescript-eslint/consistent-type-imports`)
+- Auto-sorts imports and exports
+- Prettier formatting
+- Files: `**/*.{ts,tsx}`
 
-1. Install [VS Code ESLint extension](https://github.com/microsoft/vscode-eslint).
+### CSS
 
-    Check if there are other plugins set as the default formatter in the editor. If so, they need to be removed or replaced with ESLint:
+- Powered by `@eslint/css` with Tailwind CSS v4 custom syntax support
+- Prettier formatting
+- Files: `**/*.css`
+
+### package.json
+
+- Sorts all npm standard fields into logical groups: metadata → environment → entries → scripts → dependencies → publish
+- Sub-field ordering for `exports`, `repository`, `bugs`, `engines`, `scripts`, etc.
+- Dependencies sorted alphabetically
+
+## With Visual Studio Code
+
+1. Install the [VS Code ESLint extension](https://github.com/microsoft/vscode-eslint).
+
+    Make sure ESLint is set as the default formatter:
 
     ```json
     {
-      "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     }
     ```
 
-    If the Prettier extension is also active in this workspace, it should be disabled. This is because both will conflict with each other, leading to formatting issues.
+    If the Prettier extension is active in this workspace, disable it — `@july_cm/eslint-config` already integrates `eslint-plugin-prettier` so both work together without conflict.
 
-    `@july_cm/eslint-config` has already integrated `eslint-plugin-prettier`, ensuring that both can work simultaneously without conflict.
-
-
-2. Fix on save
+2. Enable fix on save:
 
     ```json
     {
       "editor.codeActionsOnSave": {
         "source.fixAll.eslint": "explicit"
       },
-      // ESLint does not validate css, json, jsonc by default, needs to be added manually
       "eslint.validate": ["css", "json", "jsonc", "javascript", "javascriptreact", "typescript", "typescriptreact"]
     }
     ```
 
-3. Debug
+3. Debug:
 
-    Open VSCode Command Panel(Ctrl + Shift + P / Cmd + Shift + P) and run:
+    Open the Command Palette (Ctrl + Shift + P / Cmd + Shift + P) and run:
 
     ```
     ESLint: Show Output Channel
     ```
-    Fix errors if they exist.

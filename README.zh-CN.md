@@ -6,25 +6,18 @@
 [![NPM Version](https://img.shields.io/npm/v/%40july_cm%2Feslint-config)](https://www.npmjs.com/package/@july_cm/eslint-config)
 [![codecov](https://codecov.io/gh/JxJuly/eslint-config/branch/main/graph/badge.svg?token=T1E32RHZB7)](https://codecov.io/gh/JxJuly/eslint-config)
 
-这是我的通用 ESLint 配置。
+July 的通用 ESLint 配置。
 
-它依赖于 ESLint v9 或更高版本，并且仅兼容扁平化配置。
-
-❌ [传统配置](https://eslint.org/docs/latest/use/configure/configuration-files-deprecated) (legacy: `.eslintrc*`)
-
-✅ [扁平化配置](https://eslint.org/docs/latest/use/configure/configuration-files-new) (new: `eslint.config.js`)
+依赖 ESLint v10 或更高版本，仅兼容[扁平化配置](https://eslint.org/docs/latest/use/configure/configuration-files-new)（`eslint.config.js`）。
 
 ## 功能
 
-- ✅ 开箱即用且轻量的 JavaScript ESLint 配置
-
-- ✅ 开箱即用且轻量的 TypeScript ESLint 配置
-
-- ✅ 开箱即用且轻量的 CSS ESLint 配置
-
-- ✅ 支持 package.json 字段的排序，尤其是 dependencies 等字段
-
-- ✅ 搭配 Prettier 规则的代码风格检查
+- ✅ 开箱即用的 JavaScript ESLint 配置
+- ✅ 开箱即用的 TypeScript ESLint 配置
+- ✅ 开箱即用的 CSS ESLint 配置（支持 Tailwind CSS v4）
+- ✅ 全面的 `package.json` 字段排序（覆盖所有 npm 标准字段 + 子字段排序）
+- ✅ 通过 `eslint-plugin-simple-import-sort` 自动排序 import/export
+- ✅ 集成 Prettier 格式化规则（无需单独安装 Prettier 扩展）
 
 ## 安装
 
@@ -32,104 +25,120 @@
 npm install --save-dev eslint @july_cm/eslint-config
 ```
 
-`@july_cm/eslint-config` 不会为你安装 ESLint，你必须自己安装。
+`@july_cm/eslint-config` 不会为你安装 ESLint，你必须自行安装。
 
 ## 快速开始
 
-扁平化的配置，可以使用指定的编程语言配置或者直接使用推荐配置。
+可以使用单独的语言配置，也可以直接使用 `recommended` 预设。
 
-直接使用 `recommended` 也无需担心 `.ts` 文件被 `javascript` 规则命中，本包内部已经做了规则的隔离，以保证规则和性能的稳定。
+使用 `recommended` 时无需担心 `.ts` 文件被 `javascript` 规则命中——规则已按语言做了内部隔离。
 
 ```javascript
 // eslint.config.js
-const * as config from '@july_cm/eslint-config';
+import * as config from '@july_cm/eslint-config';
 
-// only javascript
+// 仅 JavaScript
 export default config.javascript;
 
-// only typescript
+// 仅 TypeScript
 export default config.typescript;
 
+// 仅 CSS
+export default config.css;
+
+// 仅 package.json 排序
+export default config.packageJson;
+
 /**
- * recommended
+ * recommended（包含以上所有配置）
  * - javascript
  * - typescript
+ * - css
  * - package.json
  */
 export default config.recommended;
 ```
 
-⚠️ 需要注意：若 `package.json` 中的 `type` 字段没有显示设置为 `module`，则文件名需要改为 `eslint.config.mjs`。
+⚠️ 若 `package.json` 中的 `type` 字段未设置为 `"module"`，需要将配置文件名改为 `eslint.config.mjs`。
 
 ## 自定义规则
 
-支持自定义规则或者配置，建议使用 ESLint 官方的函数 `defineConfig` 作为合并函数：
+可以使用 ESLint 的 `defineConfig` 扩展或覆盖规则：
 
 ```javascript
 // eslint.config.js
 import { recommended } from '@july_cm/eslint-config';
-import { defineConfig } from 'eslint/config';
+import { defineConfig, globalIgnores } from 'eslint/config';
 
-export default defineConfig(recommended, {
-  ignores: ["dist"],
-  rules: {}
-})
+export default defineConfig(
+  globalIgnores(['dist']),
+  recommended,
+  {
+    rules: {
+      // 你的自定义规则
+    },
+  }
+);
 ```
 
+## 包含的配置
 
-## 中止 `package.json` 键排序
+### JavaScript
 
-排序功能基于 [eslint-plugin-jsonc](https://github.com/ota-meshi/eslint-plugin-jsonc) 和 [prettier](https://github.com/prettier/prettier) 实现。
+- 继承 `@eslint/js` recommended 规则
+- 自动排序 import 和 export
+- Prettier 格式化（单引号、分号、80 字符宽度、ES5 尾逗号）
+- 匹配文件：`**/*.{js,mjs,cjs,jsx}`
 
-```javascript
-[{
-  pathPattern: '^$',
-  order: ['name', 'version', 'author', 'exports', 'types', 'main', 'module', 'scripts', 'dependencies', 'devDependencies'],
-},
-{
-  pathPattern: '^(?:dev|peer|optional|bundled)?[Dd]ependencies$',
-  order: { type: 'asc' },
-},
-{
-  pathPattern: 'exports',
-  order: ['types', 'require', 'import']
-}]
-```
+### TypeScript
 
-## 配合 `Visual Studio Code` 使用
+- 继承 `@eslint/js` recommended + `typescript-eslint` recommended 规则
+- 强制使用 `type` 导入（`@typescript-eslint/consistent-type-imports`）
+- 自动排序 import 和 export
+- Prettier 格式化
+- 匹配文件：`**/*.{ts,tsx}`
+
+### CSS
+
+- 基于 `@eslint/css`，支持 Tailwind CSS v4 自定义语法
+- Prettier 格式化
+- 匹配文件：`**/*.css`
+
+### package.json
+
+- 将所有 npm 标准字段按逻辑分组排序：metadata → environment → entries → scripts → dependencies → publish
+- 子字段排序：`exports`、`repository`、`bugs`、`engines`、`scripts` 等
+- 依赖按字母升序排列
+
+## 配合 Visual Studio Code 使用
 
 1. 安装 [VS Code ESLint 扩展](https://github.com/microsoft/vscode-eslint)。
 
-    检查编辑器中是否有其他插件被设置为默认格式化程序。如果有，需要将它们移除或替换为 ESLint：
+    确保 ESLint 被设置为默认格式化程序：
 
     ```json
     {
-      "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     }
     ```
 
-    如果 Prettier 扩展在此工作区中也处于活动状态，应该禁用它。这是因为两者会相互冲突，导致格式化问题。
+    如果 Prettier 扩展在此工作区中处于活动状态，请禁用它——`@july_cm/eslint-config` 已集成 `eslint-plugin-prettier`，两者可以协同工作而不会冲突。
 
-    `@july_cm/eslint-config` 已经集成了 `eslint-plugin-prettier`，确保两者可以同时工作而不会冲突。
-
-
-2. 保存时自动修复
+2. 保存时自动修复：
 
     ```json
     {
       "editor.codeActionsOnSave": {
         "source.fixAll.eslint": "explicit"
       },
-      // ESLint 默认不对 css, json, jsonc 进行校验，需要手动添加
       "eslint.validate": ["css", "json", "jsonc", "javascript", "javascriptreact", "typescript", "typescriptreact"]
     }
     ```
 
-3. 调试
+3. 调试：
 
-    打开 VSCode 命令面板（Ctrl + Shift + P / Cmd + Shift + P）并运行：
+    打开命令面板（Ctrl + Shift + P / Cmd + Shift + P）并运行：
 
     ```
     ESLint: Show Output Channel
     ```
-    如果存在错误，请修复它们。
