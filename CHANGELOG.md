@@ -1,5 +1,17 @@
 # Changelog | 变更日志
 
+## [2.5.1](https://github.com/JxJuly/eslint-config/compare/v2.5.0...v2.5.1) (2026-03-26)
+
+### 📖 Docs | 文档更新
+
+* 更新 README 文档 ([4b432cc](https://github.com/JxJuly/eslint-config/commit/4b432ccec8a8d0b3c9072ee77c1c8c4b1a10afb3))
+
+### 🔧 Chore | 日常维护
+
+* update devDependencies (vitest, vite) ([840a035](https://github.com/JxJuly/eslint-config/commit/840a035106d27a2c742dc53509726846d727f51d))
+* 优化项目配置与构建设置 ([7ab1ee0](https://github.com/JxJuly/eslint-config/commit/7ab1ee00fda2cb80a600407b4abbde4642e74841))
+* 移除 eslint-import-resolver 相关依赖 ([080c9b6](https://github.com/JxJuly/eslint-config/commit/080c9b6058848208a67a4b5cce12d19f93b23aa0))
+
 ## [2.5.0](https://github.com/JxJuly/eslint-config/compare/2.4.2...v2.5.0) (2026-03-25)
 
 ### 🌟 Features | 新功能

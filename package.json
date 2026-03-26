@@ -1,8 +1,13 @@
 {
   "name": "@july_cm/eslint-config",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "description": "Shared ESLint config for July's projects",
-  "keywords": ["eslint", "eslint-config", "prettier", "typescript"],
+  "keywords": [
+    "eslint",
+    "eslint-config",
+    "prettier",
+    "typescript"
+  ],
   "license": "MIT",
   "author": "July",
   "homepage": "https://github.com/JxJuly/eslint-config/blob/main/README.md",
