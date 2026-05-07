@@ -52,8 +52,12 @@ describe('Package.json ESLint Config Tests', () => {
       }
     }`;
 
-    const goodResults = await eslint.lintText(goodDeps, { filePath: 'package.json' });
-    const goodMsgs = goodResults.flatMap((r) => r.messages).filter((m) => m.ruleId === 'jsonc/sort-keys');
+    const goodResults = await eslint.lintText(goodDeps, {
+      filePath: 'package.json',
+    });
+    const goodMsgs = goodResults
+      .flatMap((r) => r.messages)
+      .filter((m) => m.ruleId === 'jsonc/sort-keys');
     expect(goodMsgs.length).toBe(0);
   });
 
@@ -66,8 +70,12 @@ describe('Package.json ESLint Config Tests', () => {
       }
     }`;
 
-    const badResults = await eslint.lintText(badDeps, { filePath: 'package.json' });
-    const badMsgs = badResults.flatMap((r) => r.messages).filter((m) => m.ruleId === 'jsonc/sort-keys');
+    const badResults = await eslint.lintText(badDeps, {
+      filePath: 'package.json',
+    });
+    const badMsgs = badResults
+      .flatMap((r) => r.messages)
+      .filter((m) => m.ruleId === 'jsonc/sort-keys');
     expect(badMsgs.length).toBeGreaterThan(0);
   });
 });

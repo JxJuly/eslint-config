@@ -6,7 +6,7 @@ import eslintPluginJsonc from 'eslint-plugin-jsonc';
  * 可以借助这个函数为所有插件添加 files 约束，防止语言之间的污染
  */
 const packageJsonConfig = defineConfig({
-  extends: [...eslintPluginJsonc.configs['flat/prettier']],
+  extends: [...eslintPluginJsonc.configs['base']],
   files: ['package.json'],
   rules: {
     'jsonc/sort-keys': [
