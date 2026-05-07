@@ -1,6 +1,6 @@
 {
   "name": "@july_cm/eslint-config",
-  "version": "2.5.1",
+  "version": "2.5.2",
   "description": "Shared ESLint config for July's projects",
   "keywords": [
     "eslint",

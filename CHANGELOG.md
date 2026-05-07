@@ -1,5 +1,13 @@
 # Changelog | 变更日志
 
+## [2.5.2](https://github.com/JxJuly/eslint-config/compare/v2.5.1...v2.5.2) (2026-05-07)
+
+### 🔧 Chore | 日常维护
+
+* 升级 devDependencies (vitest, vite) ([cb4e168](https://github.com/JxJuly/eslint-config/commit/cb4e168649672c4df5730840cee91ccfae258c4e))
+* 升级 release-it action 至 v0.0.5 并传递 github_token ([78f6b3a](https://github.com/JxJuly/eslint-config/commit/78f6b3a06f6a4d23e40d371f78f413b762f90f18))
+* 升级依赖版本 ([096da6f](https://github.com/JxJuly/eslint-config/commit/096da6fe504098e68ac616d08c757af185ff9538))
+
 ## [2.5.1](https://github.com/JxJuly/eslint-config/compare/v2.5.0...v2.5.1) (2026-03-26)
 
 ### 📖 Docs | 文档更新
