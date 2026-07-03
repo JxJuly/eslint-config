@@ -1,0 +1,21 @@
+package.json
+  s_6c8031fb0f1e07::t_4154be3a2cbd7a 23,25,44,55
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "27d81c04cf9fbb0ccad33ba93db5c930e94b0faa",
+  "prompts": {},
+  "sessions": {
+    "s_6c8031fb0f1e07": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f2756-a293-7bf1-bb64-bea7ab682b11",
+        "model": "unknown"
+      },
+      "human_author": "July <jiangxujin@bytedance.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
