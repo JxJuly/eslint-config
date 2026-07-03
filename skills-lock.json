@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "git-commit": {
+      "source": "JxJuly/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/git-commit/SKILL.md",
+      "computedHash": "0e468f420afaedc9550ddadd6bd61c00eb559b9ace04a01ba1542384ef9a22d1"
+    }
+  }
+}
